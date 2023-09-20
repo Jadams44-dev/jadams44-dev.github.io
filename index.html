@@ -13,83 +13,100 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
+<body>
+    <main>
+        <!--Start Nav -->
+        
+                <nav id="navbar" class="nav">
+                    <ul class = "nav-list">
+                        <li><a href="#welcome-section" class="nav-link">About</a>
+                        </li>
+                        <li><a href="#projects" class="nav-link">Projects</a>
+                        </li>
+                        <li><a href="#contact" class="nav-link">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+            
+            <!--End Nav -->
 
-    <body>
-        <header>
-            <div id="menu-icon">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <nav class="menu" id="main-menu">
-                <a href="index.html" class="current"><i class="fa fa-home"></i> Home <i class="fa fa-home"></i></a>
-                <a href="page.html"><i class="fa fa-square"></i> Page <i class="fa fa-square"></i></a>
-                <a href="#contact-section"><i class="fa fa-phone"></i> Contact <i class="fa fa-phone"></i></a>
-            </nav>
-            <a href="index.html"><img class="logo" src="assets/logo.png" alt="Logo.png"></a>
-            <h2>Home</h2>
-        </header>
 
-        <i class="fa fa-list" id="aside-show" onclick="sideMenu()"></i>
-        <aside id="aside">
-            <i class="fa fa-close" id="aside-hide" onclick="sideMenu()"></i>
-            <h2 class="right">Aside</h2>
-        </aside>
+            <!--Start welcome  -->
+            
+                <section id="welcome-section" class="welcome-section">
+                    <h1>Vonte's</h1>
+                    <p>Portfolio</p>  
+                </section>
+       
+<!--end welcome  -->
 
-        <section class="grid" id="main-section">
-            <div class="col-1"><p>TESTING 1</p></div>
-            <div class="col-2"><p>TESTING 2</p></div>
-            <div class="col-2"><p>TESTING 2</p></div>
-            <div class="col-3"><p>TESTING 3</p></div>
-            <div class="col-3"><p>TESTING 3</p></div>
-            <div class="col-3"><p>TESTING 3</p></div>
-            <div class="col-2"><p>TESTING 2</p></div>
-            <div class="col-4"><p>TESTING 4</p></div>
-            <div class="col-4"><p>TESTING 4</p></div>
-            <div class="col-5"><p>TESTING 5</p></div>
-            <div class="col-5"><p>TESTING 5</p></div>
-            <div class="col-5"><p>TESTING 5</p></div>
-            <div class="col-5"><p>TESTING 5</p></div>
-            <div class="col-5"><p>TESTING 5</p></div>
+
+           <!--Start projects  -->
+                <section id="projects" class="projects-section" >  
+                    <h1>My work</h1>
+                    <div class="projects-grid"> 
+                        
+                        <figure class="project-tile">
+                            <a href="" target="_blank">
+                                <img src="https://i.ibb.co/310s992/image-2023-09-12-175851714.png" alt="gamer_servey">
+                                <figcaption>Survey Form</figcaption>
+                            </a>
+                        </figure>
+
+                        <figure class="project-tile">
+                            <a href=""  target="_blank">
+                                <img src="https://i.ibb.co/3zTM7F6/image-2023-09-13-010601232.png" alt="gamer_servey">
+                                <figcaption>Tribute Page</figcaption>
+                            </a>
+                        </figure>
+
+                        <figure class="project-tile">
+                            <a href=""  target="_blank">
+                                <img src="https://i.ibb.co/bJcKmrz/image-2023-09-13-010641122.png" alt="gamer_servey">
+                                <figcaption>Technical Documentation Page</figcaption>
+                            </a>
+                        </figure>
+
+                        <figure class="project-tile">
+                            <a href=""  target="_blank">
+                                <img src="https://i.ibb.co/dtvDSgZ/image-2023-09-13-010726927.png" alt="gamer_servey">
+                                <figcaption>Product Landing Page</figcaption>
+                            </a>
+                        </figure>
+                        
+                       
+                </section>
+                <div class="button"> <a href="" id="profile-link" target="_blank">Would you like to know see more?</a></div>
+                <!--end welcome  -->
+                
+<!--Start contects  -->
+        <section id ="contact" class="contact-section">
+                <div id="contact-header">
+                    <h1>I also do other stuff</h1>
+                   </div> 
+                    <div class="contact-links">
+                    <a href="#" class="fa fa-facebook" target="_blank"></a>
+                    <a href="#" class="fa fa-twitter" target="_blank"></a>
+                    <a href="#" class="fa fa-youtube" target="_blank"></a>
+                    <a href="#" class="fa fa-instagram" target="_blank"></a>
+                    <a href="#" class="fa fa-pinterest" target="_blank"></a>
+                    </div>
+
         </section>
+        
+                <!--end contects -->
 
-        <section class="new-row contact grid" id="contact-section">
-            <h2>Contact</h2><br>
-            <div class="col-4">
-                <a target="_blank" href="mailto:example@email.com">
-                    <i class="fa fa-envelope-o icons"></i>
-                    <h3>Email</h3>
-                    <p>example@email.com</p>
-                </a>
-            </div>
-            <div class="col-4">
-                <a target="_blank" href="https://www.facebook.com">
-                    <i class="fa fa-facebook icons"></i>
-                    <h3>Social Media</h3>
-                    <p>@username</p>
-                </a>
-            </div>
-            <div class="col-4">
-                <i class="fa fa-phone icons"></i>
-                <h3>Phone</h3>
-                <p>01234 567 890</p>
-            </div>
-            <div class="col-4">
-                <a target="_blank" href="https://www.google.com/maps/">
-                    <i class="fa fa-map-o icons"></i>
-                    <h3>John Smith</h3>
-                    <p>123 Street,<br>
-                    AB1 2CD, UK</p>
-                </a>
-            </div>
-        </section>
+<!--Start foot  -->
+                <div class="footer">
+                    <footer>
+                        <p>Created for <a href="">freeCodeCamp</a> </p>
+                        <p>by Javonte Adams</p>
+                    </footer>
+                </div>
+                <!--end foot  -->
 
-        <footer>
-            &copy; Project/Company Name & Details&trade;
-            <a class="top-button" href="#top"><i class="fa fa-arrow-up" id="page-top"></i></a>
-        </footer>
 
-        <link rel="stylesheet" href="css/stylesheet.css">
-        <script src="js/script.js"></script>
-    </body>
+          
+    </main>
+</body>
 </html>
