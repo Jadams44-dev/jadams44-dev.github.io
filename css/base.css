@@ -1,332 +1,292 @@
-/* Setup Page Infrastructure (Base Layer) */
-
+/* Custom properties/variables  */
 :root {
-    --headerPadding: 5px;
-    --headerHeight: 85px; /* This also doubles as the Logo (img) height. */
-    --logoWidth: 180px;
-
-    --footerHeight: 45px;
-    --footerPadding: 15px;
+  
+   --black:black;
+  --blue:#1E91D6;
+  --green:#8FC93A;
+  --yellow:#E4CC37;
+  --orange:#E18335;
+  --white:#f0f0f0;
 }
 
-@media screen and (max-width: 700px) {
-    :root {
-        --headerPadding: 0px;
-        --headerHeight: 50px; /* This also doubles as the Logo (img) height. */
-        --logoWidth: 120px;
-    }
-    
-    [class^="col-"] {
-        width: 100% !important;
-    }
-
-    footer {
-        display: none;
-    }
-
-    .contact {
-        height:1000px !important;
-        text-align: center;
-    }
-
-    header h2 {
-        margin-top: 10px;
-    }
+/* Base reset */
+* {
+  margin: 0;
+  padding: 0;
 }
 
-@media screen and (max-height: 400px) {
-    aside {
-        display: none;
-    }
-    
-    footer {
-        display: none;
-    }
+/* box-sizing and font sizing */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 html {
-    scroll-behavior: smooth;
+  box-sizing: border-box;
+
+  /* Set font size for easy rem calculations
+   * default document font size = 16px, 1rem = 16px, 100% = 16px
+   * (100% / 16px) * 10 = 62.5%, 1rem = 10px, 62.5% = 10px
+  */
+  font-size: 62.5%;
+  scroll-behavior: smooth;
 }
+
+/* A few media query to set some font sizes at different screen sizes.
+ * This helps automate a bit of responsiveness.
+ * The trick is to use the rem unit for size values, margin and padding.
+ * Because rem is relative to the document font size
+ * when we scale up or down the font size on the document
+ * it will affect all properties using rem units for the values.
+*/
+
+/* I am using the em unit for breakpoints
+ * The calculation is the following
+ * screen size divided by browser base font size
+ * As an example: a breakpoint at 980px
+ * 980px / 16px = 61.25em
+*/
+
+/* 1200px / 16px = 75em */
+@media (max-width: 75em) {
+  html {
+    font-size: 60%;
+  }
+}
+
+/* 980px / 16px = 61.25em */
+@media (max-width: 61.25em) {
+  html {
+    font-size: 58%;
+  }
+}
+
+/* 460px / 16px = 28.75em */
+@media (max-width: 28.75em) {
+  html {
+    font-size: 55%;
+  }
+}
+
+
+
+/* Base styles */
 
 body {
-    margin: 0px;
-    margin-top: var(--headerPadding);
-    padding-top: var(--headerHeight);
+  font-family: 'Comic Sans MS', sans-serif;
+  font-size: 1.8rem; /* 18px */
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--white);
 }
 
-header {
-    width: 100%;
-    height: var(--headerHeight);
-    padding-top: var(--headerPadding);
-    position: fixed;
-    top: 0px;
-    text-align: center;
-    font-size: 22px;
-    background-color: rgba(0, 2, 24, 0.6);
+h1{
+  font-family: 'Comic Sans MS', sans-serif;
+  font-weight: 700;
+  font-size: 10rem;
+  color:var(--white);
+  padding:10px;
+    
 }
 
-header h2 {
-    font-size: 25px;
+ul {
+  list-style: none;
 }
 
-header a img.logo {
-    position: fixed;
-    width: var(--logoWidth);
-    height: var(--headerHeight);
-    top: 0px;
-    right: 0px;
+a {
+  text-decoration: none;
+  color: var(--white);
+  
 }
 
-header .menu {
-    width: 200px;
-    height: 0px;
-    padding-top: var(--headerPadding);
-    position: fixed;
-    top: 50px;
-    left: 5px;
-    overflow: hidden;
-    font-size: large;
-    transition: all 0.4s ease;
+img {
+  display: block;
+  width: 100%;
+  height: 85%;
 }
 
-header .menu a {
-    width: 110px;
-    color: rgba(255, 255, 255, 0.4);
-    background-color: rgb(0, 5, 43);
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    transition: all 0.3s ease;
-    display: block;
+
+/* nav starts */
+
+
+/* nav ends */
+
+.nav {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--blue);
+  box-shadow: 0 4px 0 var(--black);
+  z-index: 3;
 }
 
-header .menu a:hover {
-    background-color: rgb(0, 11, 97);
-    color: rgb(179, 143, 0);
-    padding-left: 24px;
-    cursor: pointer;
+.nav-list {
+  display: flex;
+  justify-content: space-between;
+  gap:100px
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
 
-header .menu a.current {
-    background-color: rgb(0, 11, 97);
-    color: rgb(255, 255, 255);
-    padding-left: 16px;
+@media (max-width: 28.75em) {
+  .nav {
+    justify-content: center;
+  }
+
+  .nav-list {
+    margin: 0 1rem;
+  }
 }
 
-header #menu-icon {
-    width: 50px;
-    height: 45px;
-    position: fixed;
-    top: 8px;
-    left: 15px;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-    -webkit-transition: 0.5s ease-in-out;
-    -moz-transition: 0.5s ease-in-out;
-    -o-transition: 0.5s ease-in-out;
-    transition: 0.5s ease-in-out;
-    background-color: rgb(0, 5, 43);
-    cursor: pointer;
+.nav-list a {
+  display: block;
+  font-size: 2.2rem;
+  padding: 2rem;
 }
 
-header #menu-icon span {
-    display: block;
-    position: absolute;
-    height: 9px;
-    width: 100%;
-    background: rgb(179, 143, 0);
-    border-radius: 9px;
-    opacity: 1;
-    left: 0;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-    -webkit-transition: 0.25s ease-in-out;
-    -moz-transition: 0.25s ease-in-out;
-    -o-transition: 0.25s ease-in-out;
-    transition: 0.25s ease-in-out;
+.nav-list a:hover {
+  background: var(--orange);
 }
 
-header #menu-icon span:nth-child(1) {
-    top: 0px;
-    -webkit-transform-origin: left center;
-    -moz-transform-origin: left center;
-    -o-transform-origin: left center;
-    transform-origin: left center;
+
+/* welcome starts */
+
+.welcome-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--yellow);
+ 
+
 }
 
-header #menu-icon span:nth-child(2) {
-    top: 18px;
-    -webkit-transform-origin: left center;
-    -moz-transform-origin: left center;
-    -o-transform-origin: left center;
-    transform-origin: left center;
+.welcome-section > p {
+  font-size: 3rem;
+  font-weight: 200;
+  font-style: italic;
+  color: var(--white);
+
 }
 
-header #menu-icon span:nth-child(3) {
-    top: 36px;
-    -webkit-transform-origin: left center;
-    -moz-transform-origin: left center;
-    -o-transform-origin: left center;
-    transform-origin: left center;
+/* welcome ends */
+
+/* project start*/
+
+figcaption{
+  background-color:var(--black);
+  color:var(--white);
+  padding:10px;
 }
 
-header #menu-icon.open span:nth-child(1) {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-    top: -3px;
-    left: 8px;
+.projects-section {
+  text-align: center;
+  padding: 10rem 2rem;
+  background: var(--green);
+  border-top: 4px solid var(--blue);
 }
 
-header #menu-icon.open span:nth-child(2) {
-    width: 0%;
-    opacity: 0;
+.projects-section-header {
+  max-width: 640px;
+  margin: 0 auto 6rem auto;
+  border-bottom: 0.2rem solid var(--main-white);
 }
 
-header #menu-icon.open span:nth-child(3) {
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    top: 33px;
-    left: 8px;
+@media (max-width: 28.75em) {
+  .projects-section-header {
+    font-size: 4rem;
+  }
 }
 
-aside {
-    width: 11%;
-    min-width: 175px;
-    padding-top: var(--headerPadding);
-    padding-bottom: var(--footerPadding);
-    position: fixed;
-    top: var(--headerHeight);
-    bottom: var(--footerHeight);
-    right: 0px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    word-wrap: break-word;
-    transition: all 0.3s ease;
-    background-color: rgba(0, 2, 24, 0.5);
-    display: block;
+/* "Automagic" image grid using no media queries */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 4rem;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  margin-bottom: 6rem;
+  
 }
 
-aside h2 {
-    font-size: 15px;
-    text-decoration: underline;
+
+ 
+.project:hover {
+  
+} 
+
+
+.button{
+  display: flex;
+  justify-content: center;
+  background-color: var(--green);
+  padding:10px 10px;
 }
 
-[id^="aside-"] {
-    margin-top: 5px;
-    padding-bottom: 2px;
+.button > a{  
+  display: flex;
+  justify-content: center;
+   font-weight: 200;
+  background-color: var(--yellow);
+  color:white;
+  padding:25px 10px;
 }
 
-#aside-show {
-    padding: 5px;
-    position: fixed;
-    right: 15px;
-    font-size: 22px;
-    display: none;
-    border: 2px solid rgb(179, 143, 0);
-    border-radius: 50%;
-    cursor: pointer;
-    transform: rotateY(-180deg);
-    -ms-transform: rotateY(-180deg);
-    -webkit-transform: rotateY(-180deg);
+
+/*projects ends*/
+
+
+
+
+/*contact starts*/
+
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: var(--blue);
+  border-top: 4px solid var(--yellow);
 }
 
-#aside-hide {
-    padding-left: 3px;
-    padding-right: 2px;
-    font-size: 22px;
-    border: 2px solid rgb(179, 143, 0);
-    border-radius: 50%;
-    cursor: pointer;
+
+
+.contact-links {
+            padding: 20px;
+            font-size: 300px;
+            text-decoration: none;
+            margin: 5px 80px;
 }
+
+
+
+/*contact ends*/
+
+/*footer starts*/
+        
 
 footer {
-    width: 100%;
-    height: var(--footerHeight);
-    padding-top: var(--footerPadding);
-    position: fixed;
-    bottom: 0px;
-    overflow: hidden;
-    color: rgb(255, 255, 255);
-    font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: right;
+  background: var(--orange);
+  border-top: 4px solid var(--green);
+}
+
+@media (max-width: 28.75em) {
+  footer {
+    flex-direction: column;
     text-align: center;
-    background-color: rgba(0, 2, 24, 0.85);
+  }
 }
 
-footer .top-button {
-    width: 60px;
-    height: 60px;
-    position: fixed;
-    bottom: 0px;
-    right: 0px;
-    font-size: 35px;
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    background-color: rgb(0, 0, 100);
-    cursor: pointer;
-}
 
-footer #page-top {
-    padding: 15px;
-}
-
-section.contact {
-    height: 350px;
-    padding-top: 50px;
-    padding-bottom: var(--footerHeight);
-    padding-left: 10%;
-    padding-right: 10%;
-    background-color: rgb(24, 24, 24);
-}
-
-section.contact h3 {
-    font-size: 24px;
-}
-
-section.contact p {
-    font-size: 18px;
-}
-
-section.contact a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.grid {
-    margin-left: 15%;
-    margin-right: 15%;
-}
-
-[class^="col-"] {
-    float: left;
-    word-wrap: break-word;
-}
-
-[class^="col-"] * {
-    margin: 5px;
-}
-
-.new-row {
-    clear: both;
-}
-
-.left {
-    float: left;
-}
-
-.right {
-    float: right;
-}
-
-.icons {
-    margin-top: 10px;
-    padding-top: 10px;
-    font-size: 40px !important;
-}
+    
